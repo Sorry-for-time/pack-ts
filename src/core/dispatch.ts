@@ -22,6 +22,11 @@ interface DispatchInf {
    * @description 解绑事件
    */
   off: (eventName: string) => void;
+
+  /**
+   * @description 解绑所有事件
+   */
+  unbindAll: () => void;
 }
 
 /**
@@ -80,5 +85,9 @@ export class Dispatch implements DispatchInf {
         console.warn(`the event --> ${eventName} delete fail`);
       }
     }
+  }
+
+  unbindAll(): void {
+    this.eventsMap.clear();
   }
 }
