@@ -7,6 +7,12 @@ export function executeDispatchTest(): void {
   dispatcher.on("test", (...params: any) => {
     console.log(...params);
   });
+
+  // 重复添加测试
+  dispatcher.on("test", (...params: any) => {
+    console.log(...params);
+  });
+
   // 触发
   dispatcher.emit("test", "how are you today");
   dispatcher.emit("test", "how are you today");
@@ -17,6 +23,7 @@ export function executeDispatchTest(): void {
   });
 
   dispatcher.emit("happy", "I have seen better");
+  // 重复触发
   dispatcher.emit("happy", "I have seen better");
 
   // 解绑事件
