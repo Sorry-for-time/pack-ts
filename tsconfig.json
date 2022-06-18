@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "target": "es2015",
+    "module": "ESNext",
+    "strict": true,
+    "alwaysStrict": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "jsx": "preserve",
+    "declaration": true,
+    "declarationMap": true
+  },
+  "exclude": ["lib", "node_modules", "rollup.config.js"]
+}
