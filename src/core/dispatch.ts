@@ -1,15 +1,43 @@
 interface DispatchInf {
-  on: (name: string, callBack: Function) => void /* 绑定事件 */;
-  emit: (name: string, ...params: Array<any>) => void /* 触发事件 */;
-  once: (name: string, callBack: Function) => void /* 只执行一次事件 */;
-  off: (name: string) => void /* 时间解绑 */;
+  /**
+   * @description 绑定事件
+   */
+  on: (name: string, callBack: Function) => void;
+
+  /**
+   * @description 派发事件
+   */
+  emit: (name: string, ...params: Array<any>) => void;
+
+  /**
+   * @description 绑定一个临时事件(只执行一次)
+   */
+  once: (name: string, callBack: Function) => void;
+
+  /**
+   * @description 解绑事件
+   */
+  off: (name: string) => void;
 }
 
 type MyList = {
   [key: string]: Function;
 };
 
+/**
+ * @description 一个简单的消息订阅发布机制实现类
+ * @export
+ * @class Dispatch
+ * @implements {DispatchInf}
+ * @version v0.01
+ */
 export class Dispatch implements DispatchInf {
+  /**
+   * @description 用于存储绑定的事件
+   * @private
+   * @type {MyList}
+   * @memberof Dispatch
+   */
   private eventList: MyList;
 
   constructor() {
