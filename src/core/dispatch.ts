@@ -28,7 +28,7 @@ interface DispatchInf {
  * @description 一个简单的消息订阅发布机制实现类
  * @export
  * @class Dispatch
- * @implements {DispatchInf}
+ * @implements { DispatchInf }
  * @version v0.01
  */
 export class Dispatch implements DispatchInf {
