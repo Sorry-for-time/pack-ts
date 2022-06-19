@@ -9,13 +9,13 @@ export const enum styleEnum {
     text-shadow: 0 0 1px black;
   `,
   "main" = `
-    background-color: #00AAAA;
+    background-color: hsl(36, 100%, 50%);
+    color: rgba(0, 0, 0, 0.8);
     padding: 2px 6px;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
     box-shadow: 0 0 3px gray;
-    font-weight: 500;
-    text-shadow: 0 0 1px black;
+    font-weight: 800;
   `,
   "hint" = `
     background-color: #088A08;
