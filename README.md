@@ -11,3 +11,13 @@
 
 - 练习的项目使用 rollup 进行搭建, 可自行修改 `rollup.config.js` 进行配置
 - 个人代码练习, 糟糕勿喷 🤣...
+
+## Quick start
+
+```sh
+# shell: bash
+cd pack-ts && npm install
+
+# open dev server
+npm run dev
+```
