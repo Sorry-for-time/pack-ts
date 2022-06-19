@@ -12,6 +12,7 @@
   "license": "MIT",
   "devDependencies": {
     "cross-env": "^7.0.3",
+    "reflect-metadata": "^0.1.13",
     "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-replace": "^2.2.0",

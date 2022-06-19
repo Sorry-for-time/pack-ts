@@ -23,4 +23,7 @@ export function proxyFactoryTest(): void {
   man.age = 23;
   console.log(man.name);
   console.log(man.age);
+
+  const t = Reflect.get(proxyFactory, "saySomething");
+  t && t();
 }
