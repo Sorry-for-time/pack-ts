@@ -33,6 +33,9 @@ nav {
 main {
   backdrop-filter: blur(12px);
   background: scroll no-repeat center linear-gradient(-23deg, hsla(41, 100%, 50%, 0.192), hsla(0, 100%, 50%, 0.185));
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 
 footer {
@@ -44,7 +47,6 @@ footer {
 }
 
 main .container {
-  margin: 60px auto;
   height: 180px;
   width: 460px;
   background-color: black;
