@@ -21,3 +21,7 @@ cd pack-ts && npm install
 # open dev server
 npm run dev
 ```
+
+## Demo
+
+<img src=".assets/Snipaste_2022-06-20_17-38-03.png" />
