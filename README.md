@@ -24,4 +24,7 @@ npm run dev
 
 ## Demo
 
-<img src=".assets/Snipaste_2022-06-20_17-38-03.png" />
+- console 测试输出
+  <img src=".assets/Snipaste_2022-06-20_17-38-03.png" />
+- ~~装饰性的 html 页面~~
+  <img src=".assets/Snipaste_2022-06-21_02-53-51.png" />
