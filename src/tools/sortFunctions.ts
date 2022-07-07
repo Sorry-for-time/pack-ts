@@ -1,12 +1,15 @@
 /**
  * @detail 一个简单的冒泡排序
+ * @brief 相邻的两个元素进行比较
  * @param list Array<T>
  * @return {list} Array<T>
- * @detail 时间复杂度: O(n^2), 非破坏性更新
+ * @detail 时间复杂度: O(n^2), 稳定
  */
 export function bubbleSort<T>(list: Array<T>): Array<T> {
-  for (let i: number = 0; i < list.length - 1; ++i) {
-    for (let k: number = 0; k < list.length - 1; ++k) {
+  // 需要循环 n - 1 趟
+  for (let i: number = 1; i < list.length - 1; ++i) {
+    // 每次比较都将最大的元素进行沉底
+    for (let k: number = 0; k < list.length - i - 1; ++k) {
       // 后一个元素比前一个元素的小的情况下
       if (list[k] > list[k + 1]) {
         // 取得索引值
