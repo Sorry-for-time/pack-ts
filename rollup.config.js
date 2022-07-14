@@ -15,7 +15,7 @@ export default {
   input: "./src/main.ts",
   // 出口
   output: {
-    file: path.resolve(__dirname, "./lib/index.js"),
+    file: path.resolve(__dirname, "./dist/index.js"),
     format: "umd",
     sourcemap: isDev() /* 映射文件 */,
   },

@@ -1,9 +1,7 @@
-node_modules
-build
-target
-lib
-
-.idea
-.vscode
-
+/node_modules
+/build
+/target
+/dist
+/.idea
+/.vscode
 !.gitignore
