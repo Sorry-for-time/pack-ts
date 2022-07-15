@@ -7,20 +7,31 @@
     <title>pub-sub</title>
     <style>
       @import "./style.css";
+      [data-cloak] {
+        display: none;
+      }
     </style>
     <script src="../dist/index.js" async></script>
   </head>
   <body>
-    <header></header>
-    <section>
-      <nav></nav>
-      <main>
-        <div class="container">
-          <span class="first">Hello</span>
-          <span class="second">Typescript</span>
-        </div>
-      </main>
-    </section>
-    <footer></footer>
+    <div id="app" data-cloak>
+      <header>
+        <h3>It's happiness when you rich</h3>
+      </header>
+      <section>
+        <nav>
+          <p>a boring nav in here</p>
+        </nav>
+        <main>
+          <div class="container">
+            <span class="first">Hello</span>
+            <span class="second">Typescript</span>
+          </div>
+        </main>
+      </section>
+      <footer>
+        <h1>assert this is an elegant footer</h1>
+      </footer>
+    </div>
   </body>
 </html>
