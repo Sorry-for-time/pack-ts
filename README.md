@@ -1,4 +1,4 @@
-# 一些个人的普通的 typescript 练习(仅此而已)
+一些个人的普通且乱七八糟的小学生 typescript 练习(~~确信~~)
 
 ## References
 
@@ -10,12 +10,13 @@
 ## Note
 
 - 练习的项目使用 rollup 进行搭建, 可自行修改 `rollup.config.js` 进行配置
-- 个人代码练习, 糟糕勿喷 🤣...
+- 个人代码练习, 里面基本存放一些乱七八糟的东西 (~~糟糕勿喷~~)
 
 ## Quick start
 
 ```sh
 # shell: bash
+# require you nodejs environment already set
 cd pack-ts && npm install
 
 # open dev server
@@ -24,7 +25,8 @@ npm run dev
 
 ## Demo
 
-- console 测试输出
+- ~~很正经的页面~~
+  <img src=".assets/major-view.png" />
+
+- console 练习样例输出
   <img src=".assets/Snipaste_2022-06-20_17-38-03.png" />
-- ~~装饰性的 html 页面~~
-  <img src=".assets/Snipaste_2022-06-21_02-53-51.png" />
