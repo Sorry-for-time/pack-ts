@@ -130,18 +130,16 @@ export function builtInSymbolTest(): void {
       super(num);
     }
 
-    // 通过静态方法重写 hasInstance
-    static [Symbol.hasInstance](value: any) {
-      // console.log("value.__proto__ === EmitterSon.prototype", value.__proto__ === EmitterSon.prototype); // true
+    // 重写 hasInstance
+    static [Symbol.hasInstance](_value: any) {
+      // console.log("_value.__proto__ === EmitterSon.prototype", value.__proto__ === EmitterSon.prototype); // true
       return false;
     }
   }
-
   const b = new EmitterSon(12);
   console.log("b instanceof Emitter:", b instanceof Emitter); // true
   console.log("Emitter[Symbol.hasInstance](b): ", Emitter[Symbol.hasInstance](b)); // true
   console.log("-".repeat(23));
-
   console.log("b instanceof EmitterSon:", b instanceof EmitterSon); // false
   console.log("EmitterSon[Symbol.hasInstance](b)", EmitterSon[Symbol.hasInstance](b)); // false
   console.log("-".repeat(23));
