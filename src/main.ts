@@ -1,11 +1,12 @@
 import { formateLogOutput } from "./util/log-style";
 import { styleEnum } from "./util/log-style";
-import { stringTemplateTest } from "./test/stringTemplateTest";
 // import { basicDataTypeTest } from "../src/test/basicDataTypeTest";
 // import { executeDispatchTest } from "./test/dispatchTest";
 // import { proxyFactoryTest } from "./test/proxyTest";
 // import { eventLoopTest } from "./test/eventLoopTest";
 // import { sortFunctionTest } from "./test/sortFunctionTests";
+// import { stringTemplateTest } from "./test/stringTemplateTest";
+import { symbolTest, symbolTest2 } from "./test/symbolTest";
 
 window.addEventListener("load", () => {
   const app: HTMLElement | null = document.getElementById("app");
@@ -22,4 +23,6 @@ formateLogOutput(["👋", `https://www.github.com/sorry-for-time`], [styleEnum.t
 // eventLoopTest();
 // sortFunctionTest();
 // basicDataTypeTest();
-stringTemplateTest();
+// stringTemplateTest();
+// symbolTest()
+symbolTest2();
