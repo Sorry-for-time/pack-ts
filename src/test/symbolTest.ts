@@ -209,3 +209,34 @@ export function symbolSpeciesTest(): void {
   // 判断对象实例身上是否存在某个属性
   console.log(obj.hasOwnProperty("name")); // true
 }
+
+export function loopRelativeTest(): void {
+  const aSym = Symbol.for("aSym");
+
+  const obj = {
+    name: "Fox",
+    age: 23,
+    [aSym]: "LIVE FREE OR DIE",
+
+    // 为 for of 提供
+    *[Symbol.iterator]() {
+      const keys: Array<string> = Object.getOwnPropertyNames(this);
+      for (let i: number = 0; i < keys.length; ++i) {
+        yield keys[i];
+      }
+    },
+  };
+
+  // for in 会枚举对象中非符号键属性
+  // 推荐使用 const 确保局部变量不会被修改
+  // ECMAScript 对象属性是无序的, 所以 for in 无法保证返回对象属性的顺序
+  for (const v in obj) {
+    console.log(v);
+  }
+
+  console.log("-".repeat(30));
+  // for of 循环会参照可迭代对象的 next 方法产生值的顺序迭代元素
+  for (const v of obj) {
+    console.log(v);
+  }
+}
