@@ -1,6 +1,7 @@
 import { formateLogOutput } from "./util/log-style";
 import { styleEnum } from "./util/log-style";
-import { basicDataTypeTest } from "../src/test/basicDataTypeTest";
+import { stringTemplateTest } from "./test/stringTemplateTest";
+// import { basicDataTypeTest } from "../src/test/basicDataTypeTest";
 // import { executeDispatchTest } from "./test/dispatchTest";
 // import { proxyFactoryTest } from "./test/proxyTest";
 // import { eventLoopTest } from "./test/eventLoopTest";
@@ -20,4 +21,5 @@ formateLogOutput(["👋", `https://www.github.com/sorry-for-time`], [styleEnum.t
 // proxyFactoryTest();
 // eventLoopTest();
 // sortFunctionTest();
-basicDataTypeTest();
+// basicDataTypeTest();
+stringTemplateTest();
