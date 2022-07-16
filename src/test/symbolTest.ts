@@ -84,3 +84,65 @@ export function symbolTest2(): void {
   // 3: Symbol(qux)
   // 4: Symbol(www)
 }
+
+/**
+ * @description 内置符号基本了解
+ * @description 所有内置符号属性都是不可写, 不可枚举吗不可配置的
+ */
+export function builtInSymbolTest(): void {
+  /**
+   * @description 一个书本上的简单示例
+   */
+  class Emitter {
+    private max: number;
+    private asyncIndex: number = 0;
+
+    constructor(max: number) {
+      this.max = max;
+    }
+
+    // 定义执行 for await (const x of xxx) 的行为
+    // 隐式通过异步生成器函数返回
+    async *[Symbol.asyncIterator]() {
+      while (this.asyncIndex < this.max) {
+        yield new Promise((resolve) => {
+          resolve(this.asyncIndex++);
+        });
+      }
+    }
+  }
+
+  async function emitterTest(): Promise<void> {
+    const emitterInstance: Emitter = new Emitter(3);
+    for await (const v of emitterInstance) {
+      console.log(v);
+    }
+  }
+  emitterTest(); // 0 1 2
+
+  console.log(new Emitter(1) instanceof Emitter); // true
+  console.log(Emitter[Symbol.hasInstance](new Emitter(12))); // true
+
+  // Symbol.hasInstance 这个属性定义在 Function 的原型上,
+
+  class EmitterSon extends Emitter {
+    constructor(num: number) {
+      super(num);
+    }
+
+    // 通过静态方法重写 hasInstance
+    static [Symbol.hasInstance](value: any) {
+      // console.log("value.__proto__ === EmitterSon.prototype", value.__proto__ === EmitterSon.prototype); // true
+      return false;
+    }
+  }
+
+  const b = new EmitterSon(12);
+  console.log("b instanceof Emitter:", b instanceof Emitter); // true
+  console.log("Emitter[Symbol.hasInstance](b): ", Emitter[Symbol.hasInstance](b)); // true
+  console.log("-".repeat(23));
+
+  console.log("b instanceof EmitterSon:", b instanceof EmitterSon); // false
+  console.log("EmitterSon[Symbol.hasInstance](b)", EmitterSon[Symbol.hasInstance](b)); // false
+  console.log("-".repeat(23));
+}
