@@ -6,7 +6,7 @@ import { styleEnum } from "./util/log-style";
 // import { eventLoopTest } from "./test/eventLoopTest";
 // import { sortFunctionTest } from "./test/sortFunctionTests";
 // import { stringTemplateTest } from "./test/stringTemplateTest";
-import { symbolTest, symbolTest2, builtInSymbolTest } from "./test/symbolTest";
+import { symbolTest, symbolTest2, builtInSymbolTest, testSymbolIterator, symbolSpeciesTest } from "./test/symbolTest";
 
 window.addEventListener("load", () => {
   const app: HTMLElement | null = document.getElementById("app");
@@ -26,4 +26,6 @@ formateLogOutput(["👋", `https://www.github.com/sorry-for-time`], [styleEnum.t
 // stringTemplateTest();
 // symbolTest()
 // symbolTest2();
-builtInSymbolTest();
+// builtInSymbolTest();
+// testSymbolIterator();
+symbolSpeciesTest();

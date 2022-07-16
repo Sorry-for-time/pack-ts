@@ -124,7 +124,6 @@ export function builtInSymbolTest(): void {
   console.log(Emitter[Symbol.hasInstance](new Emitter(12))); // true
 
   // Symbol.hasInstance 这个属性定义在 Function 的原型上,
-
   class EmitterSon extends Emitter {
     constructor(num: number) {
       super(num);
@@ -143,4 +142,61 @@ export function builtInSymbolTest(): void {
   console.log("b instanceof EmitterSon:", b instanceof EmitterSon); // false
   console.log("EmitterSon[Symbol.hasInstance](b)", EmitterSon[Symbol.hasInstance](b)); // false
   console.log("-".repeat(23));
+}
+
+/**
+ * @description 迭代器基本定义
+ */
+export function testSymbolIterator(): void {
+  class Foo {
+    private max: number;
+    constructor(max: number) {
+      this.max = max;
+    }
+
+    *[Symbol.iterator]() {
+      for (let i: number = 0; i < this.max; i++) {
+        yield i;
+      }
+    }
+  }
+
+  const foo: Foo = new Foo(3);
+  for (const v of foo) {
+    console.log(v); // 0 1 2
+  }
+}
+
+/**
+ * @description 定义静态获取器(getter)方法, 覆盖新创建实例的原型定义
+ */
+export function symbolSpeciesTest(): void {
+  class Bar extends Array {}
+
+  class Baz extends Bar {
+    // 重写 Baz 的原型定义
+    static get [Symbol.species]() {
+      return Array;
+    }
+  }
+
+  let bar: Bar = new Bar();
+  console.log(bar instanceof Array); // true
+  console.log(bar instanceof Bar); // true
+  bar = bar.concat("bar");
+  console.log(bar);
+  console.log("-".repeat(30));
+
+  console.log(bar instanceof Array); // true
+  console.log(bar instanceof Bar); // true
+  console.log("-".repeat(30));
+
+  let baz: Baz = new Baz();
+  console.log(baz instanceof Array); // true
+  console.log("-".repeat(30));
+
+  console.log(baz instanceof Baz); // true
+  baz = baz.concat("baz");
+  console.log(baz instanceof Baz); // false
+  console.log(baz instanceof Array); // true
 }
