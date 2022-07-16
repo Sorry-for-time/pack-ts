@@ -1,5 +1,14 @@
+import { type } from "os";
+
+type ObjType = {
+  name: string;
+  salary: number;
+  testFn: Function;
+  symbolTest: symbol;
+};
+
 /**
- * @references JavaScript高级程序设计第四版
+ * @references <<JavaScript 高级程序设计>> 第四版
  * @description 回顾一下 js 的数据类型(章节起始页: P30)
  */
 export function basicDataTypeTest(): void {
@@ -7,7 +16,7 @@ export function basicDataTypeTest(): void {
   let testFn: Function = (): void => {};
   let salary: number = 5000;
   let symbolTest = Symbol("What");
-  let obj = {
+  let obj: Partial<ObjType> = {
     name,
     salary,
     testFn,
