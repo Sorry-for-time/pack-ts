@@ -199,4 +199,13 @@ export function symbolSpeciesTest(): void {
   baz = baz.concat("baz");
   console.log(baz instanceof Baz); // false
   console.log(baz instanceof Array); // true
+  console.log("-".repeat(30));
+
+  const obj = new Object({
+    name: "Wayne",
+    age: 23,
+  });
+  console.log(obj);
+  // 判断对象实例身上是否存在某个属性
+  console.log(obj.hasOwnProperty("name")); // true
 }
