@@ -14,8 +14,8 @@ import { styleEnum } from "./util/log-style";
 //   symbolSpeciesTest,
 //   loopRelativeTest,
 // } from "./test/symbolTest";
-
-import { referenceValueTest } from "./test/referenceValueTest";
+// import { referenceValueTest } from "./test/referenceValueTest";
+import { arrayFunctionTest } from "./test/arrayFunctionTest";
 
 window.addEventListener("load", () => {
   const app: HTMLElement | null = document.getElementById("app");
@@ -39,4 +39,5 @@ formateLogOutput(["👋", `https://www.github.com/sorry-for-time`], [styleEnum.t
 // testSymbolIterator();
 // symbolSpeciesTest();
 // loopRelativeTest();
-referenceValueTest();
+// referenceValueTest();
+arrayFunctionTest();
