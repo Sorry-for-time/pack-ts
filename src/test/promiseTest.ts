@@ -65,7 +65,6 @@ export function promiseTest(): void {
   // 1 // 待定, 取决于同步代码中那耗时操作所消耗的时间
   // 6 // 待定, 取决于同步代码中那耗时操作所消耗的时间, 但会在 try set zero 之后
   // 8 会在 try set zero 之后, 在 6 之后
-
   // asyncMarcoAndMicroTaskCompare3();
   // script start
   // async1 start
@@ -77,8 +76,118 @@ export function promiseTest(): void {
   // setTimeout
 }
 
-export function promiseBasicReview(): void {
+/**
+ * @notes
+ * es6 新增了期约(promise)引用数据类型
+ * javascript模型为单线程时间循环模型
+ * 异步行为类似系统中断, 即当前线程外部的实体可以触发代码执行
+ * es6 的 Promise 规范接受了 CommonJs 的 Promises/A+ 规范
+ * 期约默认包含三种状态: pending(初始状态), fulfilled, rejected
+ * 状态只要从待定变为兑现或者失败, 就不可再改变, 且期约的状态为私有, 不允许外部修改
+ * 执行器函数是同步执行的(执行器函数是期约的初始化函数)
+ *
+ * 拒绝期约的的错误并没有抛到执行的同步代码里, 而是通过浏览器的异步消息队列来处理的
+ * 所以代码一旦开始以异步模式执行, 那么与之交互的方式就是使用异步结构(期约的方法)
+ */
+export function promiseBasicReview1(): void {
+  // console.log(oldAsyncExample());
+  // 实例化一个空的 Promise 实例对象(要求至少传递一个空的执行器函数)
+  const aPromise: Promise<unknown> = new Promise(() => {});
+  console.log(aPromise); // Promise {<pending>}
+  // 通过调用静态方法可以实例化一个解决的期约
+  const secondPromise: Promise<string> = Promise.resolve("second");
+  console.log(secondPromise); // Promise {<fulfilled>: 'second'}
 
+  // 链式调用
+  secondPromise
+    .then(
+      // onfulfilled
+      (res: string): string => {
+        console.log(res);
+        return res.toUpperCase();
+      },
+      // onrejected
+      (err: any): void => {
+        console.warn(err);
+      }
+    )
+    .then((res: string | void): void => {
+      console.log(res);
+    })
+    .catch((err: unknown): void => {
+      console.log(err);
+    })
+    .finally((): void => {
+      console.log("everything will leave");
+    });
+  // second
+  // SECOND
+  // everything will leave
+
+  // 对于静态方法而言, 如果传入的参数本身是一个期约, 那它的行为就类似一个空包装, 因此可以说 Promise.resolve 是一个幂等方法
+  const p: Promise<() => void> = new Promise(() => {});
+  setTimeout(console.log, 300, p === Promise.resolve(p)); // true
+  console.log(p); // Promise {<pending>}
+
+  // Promise.reject() 方法会实例化一个拒绝的期约并抛出一个异步的错误(这个错误不能通过 try/catch 捕获)
+  const p1 = Promise.reject("is why?");
+  p1.then(null, (reason) => {
+    console.log("onrejected:", reason);
+  }); // onrejected: is why?
+  console.log(p1); // Promise {<rejected>: 'is why?'}
+}
+
+/**
+ * @notes
+ * 在 ecmascript 暴露的结构当中, 任何对象都有一个 then 方法[实现 Thenable 接口]
+ * then 方法最多接收两个参数(且都为可选)
+ */
+export function promiseBasicReview2(): void {
+  console.log(Promise.prototype);
+  type TestV = {
+    value: string;
+    cost: number;
+  };
+
+  // .then 方法会返回一个新的期约实例
+  const aPromise: Promise<void> = new Promise((resolve: (value: TestV) => void, _reject) => {
+    const start: number = Date.now();
+    setTimeout(() => {
+      const res: TestV = {
+        value: "distinguish is evil",
+        cost: Date.now() - start,
+      };
+      resolve(res);
+    }, 3000);
+  }).then(
+    (onResolved: TestV): void => {
+      console.log(onResolved.value);
+      console.log((onResolved as TestV).cost);
+    },
+    (onRejected: any): void => {
+      console.warn(onRejected);
+    }
+  );
+
+  // distinguish is evil
+  // promiseTest.ts:165 3015
+  console.log(aPromise); // Promise {<pending>}
+  setTimeout((): void => {
+    console.log(aPromise);
+  }, 4000); // Promise {<fulfilled>: undefined}
+}
+
+// 以前进行异步操作的一个简单栗子
+function oldAsyncExample(): number {
+  return window.setTimeout(() => {
+    try {
+      console.log(2 * 2);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      console.log(`%c${"-".repeat(12)} everything will done ${"-".repeat(12)}`, "background: #ccc; color: black");
+    }
+  });
 }
 
 // 一个没有感情的例子
