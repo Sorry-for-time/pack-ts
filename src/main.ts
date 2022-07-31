@@ -44,4 +44,4 @@ formateLogOutput(["👋", `https://www.github.com/sorry-for-time`], [styleEnum.t
 // arrayFunctionTest();
 // promiseTest();
 // promiseBasicReview1();
-promiseBasicReview2();
+// promiseBasicReview2();
