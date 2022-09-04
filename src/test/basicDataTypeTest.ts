@@ -1,5 +1,3 @@
-import { type } from "os";
-
 type ObjType = {
   name: string;
   salary: number;
