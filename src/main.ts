@@ -18,7 +18,8 @@ import { styleEnum } from "./util/log-style";
 // import { arrayFunctionTest } from "./test/arrayFunctionTest";
 // import { promiseTest, promiseBasicReview1, promiseBasicReview2 } from "./test/promiseTest";
 // import { unionTypeTest } from "./test/unionTypeTest";
-import { basicGrammarTest } from "./test/basicGrammar";
+// import { basicGrammarTest } from "./test/basicGrammar";
+import { keyofTest } from "./test/keyofTest";
 
 window.addEventListener("load", () => {
   const app: HTMLElement | null = document.getElementById("app");
@@ -48,4 +49,5 @@ formateLogOutput(["👋", `https://www.github.com/sorry-for-time`], [styleEnum.t
 // promiseBasicReview1();
 // promiseBasicReview2();
 // unionTypeTest();
-basicGrammarTest();
+// basicGrammarTest();
+keyofTest();
