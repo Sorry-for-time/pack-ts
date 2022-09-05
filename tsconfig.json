@@ -3,12 +3,14 @@
     "baseUrl": "./",
     "target": "ESNext",
     "module": "ESNext",
-    "strict": true,
+    "strict": true, // 严格模式
     "alwaysStrict": true,
     "allowJs": true,
-    "sourceMap": true,
-    "experimentalDecorators": true,
+    "sourceMap": true, // 是否生成 map 文件
+    "experimentalDecorators": true, // 开启装饰器功能
+    "checkJs": true,
     "emitDecoratorMetadata": true,
+    "noImplicitAny": true, // 不允许隐式 any 参数
     "jsx": "preserve",
     "declaration": true,
     "declarationMap": true,
