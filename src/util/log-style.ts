@@ -40,7 +40,7 @@ export const enum styleEnum {
 
 export function formateLogOutput(
   msgs: Array<any> = ["hint", ""],
-  styles: Array<string> = [styleEnum.title, styleEnum.main]
+  styles: Array<string> = [styleEnum.title, styleEnum.main],
 ): void {
   let unwrap: string = "";
   msgs.forEach((item) => {
