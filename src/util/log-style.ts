@@ -1,5 +1,5 @@
 export const enum styleEnum {
-  "title" = `
+  title = `
     background-color: #555555;
     padding: 2px 6px;
     border-top-left-radius: 3px;
@@ -8,7 +8,7 @@ export const enum styleEnum {
     font-weight: 500;
     text-shadow: 0 0 1px black;
   `,
-  "main" = `
+  main = `
     background-color: hsl(36, 100%, 50%);
     color: rgba(0, 0, 0, 0.8);
     padding: 2px 6px;
@@ -17,7 +17,7 @@ export const enum styleEnum {
     box-shadow: 0 0 3px gray;
     font-weight: 800;
   `,
-  "hint" = `
+  hint = `
     background-color: #088A08;
     padding: 2px 6px;
     border-top-right-radius: 3px;
@@ -27,7 +27,7 @@ export const enum styleEnum {
     color: white;
     text-shadow: 0 0 1px black;
   `,
-  "warn" = `
+  warn = `
     background-color: orange;
     padding: 2px 6px;
     border-top-right-radius: 3px;
