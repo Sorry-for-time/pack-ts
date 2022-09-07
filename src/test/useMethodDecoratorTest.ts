@@ -1,4 +1,4 @@
-import { useDebounce } from "../core/annotations";
+import { useDebounce, useGlobalErrorHandler } from "../core/annotations";
 
 class TestClass {
   public name: string = "Wayne";
@@ -13,8 +13,10 @@ class TestClass {
   }
 
   @useDebounce()
+  @useGlobalErrorHandler()
   public static justLog() {
     console.log("2333");
+    throw new Error("这里只是没有明确意义的随便抛出错误, 好让装饰器捕获");
   }
 }
 

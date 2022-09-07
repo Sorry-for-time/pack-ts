@@ -37,3 +37,18 @@ export function useDebounce(delay: number = 300, startImmediate: boolean = true)
     console.log(`%cafter use method decorator ===>" ${descriptor.value}`, "color: yellow");
   };
 }
+
+/**
+ * @description 全局异常错误处理
+ * @export
+ * @return {*}  {MethodDecorator}
+ */
+export function useGlobalErrorHandler(): MethodDecorator {
+  return (_target: Object, _propertyKey: string | symbol, descriptor: PropertyDescriptor): void => {
+    try {
+      descriptor.value();
+    } catch (error) {
+      console.log(`%c======== problem ==============> ${error}`, "color: orange");
+    }
+  };
+}
