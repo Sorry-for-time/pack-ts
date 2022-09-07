@@ -27,7 +27,9 @@ export function inject(...fns: Array<InjectFn>): ClassDecorator {
  * @return {*}  {MethodDecorator}
  */
 export function useDebounce(delay: number = 300, startImmediate: boolean = true): MethodDecorator {
-  return (target: Object, propertyKey: string | symbol, operationObject) => {
-    (operationObject.value as any) = debounce(target.constructor.prototype[propertyKey] as any, delay, startImmediate);
+  return (_target: Object, _propertyKey: string | symbol, descriptor: PropertyDescriptor) => {
+    console.log(`%cbefore use method decorator ${descriptor.value}`, "color: cyan");
+    descriptor.value = debounce(descriptor.value, delay, startImmediate);
+    console.log(`%cafter use method decorator ===>" ${descriptor.value}`, "color: yellow");
   };
 }

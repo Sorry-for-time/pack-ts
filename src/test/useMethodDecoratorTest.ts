@@ -11,6 +11,11 @@ class TestClass {
   sayName(): void {
     console.log("只因太没");
   }
+
+  @useDebounce()
+  public static justLog() {
+    console.log("2333");
+  }
 }
 
 /**
@@ -18,6 +23,8 @@ class TestClass {
  * @export
  */
 export function useMethodDecoratorTest(): void {
+  const testInstance = new TestClass();
   const header: HTMLElement | null = document.querySelector("header");
-  header && header.addEventListener("click", new TestClass().sayName);
+  header && header.addEventListener("click", testInstance.sayName);
+  console.log(TestClass.prototype);
 }
