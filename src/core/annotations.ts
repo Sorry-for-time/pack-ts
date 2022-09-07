@@ -27,7 +27,11 @@ export function inject(...fns: Array<InjectFn>): ClassDecorator {
  * @return {*}  {MethodDecorator}
  */
 export function useDebounce(delay: number = 300, startImmediate: boolean = true): MethodDecorator {
-  return (_target: Object, _propertyKey: string | symbol, descriptor: PropertyDescriptor) => {
+  // 完整能拿到如下三个参数, 最后一个 descriptor 可操作性最多
+  // return (_target: Object, _propertyKey: string | symbol, descriptor: PropertyDescriptor) => {
+  return (...args: Array<any>) => {
+    // 也可以用 es6 的新语法偷个懒
+    const [, , descriptor] = args;
     console.log(`%cbefore use method decorator ${descriptor.value}`, "color: cyan");
     descriptor.value = debounce(descriptor.value, delay, startImmediate);
     console.log(`%cafter use method decorator ===>" ${descriptor.value}`, "color: yellow");
