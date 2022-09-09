@@ -21,7 +21,7 @@ import { styleEnum } from "./util/log-style";
 // import { basicGrammarTest } from "./test/basicGrammar";
 // import { keyofTest } from "./test/keyofTest";
 // import { classMixinTest } from "./test/classMixinTest";
-import { useMethodDecoratorTest } from "./test/useMethodDecoratorTest";
+import { usePickTest } from "./test/usePickTest";
 
 window.addEventListener("load", () => {
   const app: HTMLElement | null = document.getElementById("app");
@@ -29,7 +29,7 @@ window.addEventListener("load", () => {
     app.removeAttribute("data-cloak");
   }
 
-  useMethodDecoratorTest();
+  // useMethodDecoratorTest();
 });
 
 formateLogOutput(["✨", `you are running on ${process.env.NODE_ENV} mode!`]);
@@ -56,3 +56,4 @@ formateLogOutput(["👋", `https://www.github.com/sorry-for-time`], [styleEnum.t
 // basicGrammarTest();
 // keyofTest();
 // classMixinTest();
+usePickTest();
