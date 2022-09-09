@@ -21,7 +21,8 @@ import { styleEnum } from "./util/log-style";
 // import { basicGrammarTest } from "./test/basicGrammar";
 // import { keyofTest } from "./test/keyofTest";
 // import { classMixinTest } from "./test/classMixinTest";
-import { usePickTest } from "./test/usePickTest";
+// import { usePickTest } from "./test/usePickTest";
+import { useRecordTest } from "./test/useRecordTest";
 
 window.addEventListener("load", () => {
   const app: HTMLElement | null = document.getElementById("app");
@@ -56,4 +57,5 @@ formateLogOutput(["👋", `https://www.github.com/sorry-for-time`], [styleEnum.t
 // basicGrammarTest();
 // keyofTest();
 // classMixinTest();
-usePickTest();
+// usePickTest();
+useRecordTest();
