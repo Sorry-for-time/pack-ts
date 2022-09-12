@@ -23,6 +23,7 @@ import { styleEnum } from "./util/log-style";
 // import { classMixinTest } from "./test/classMixinTest";
 // import { usePickTest } from "./test/usePickTest";
 import { useRecordTest } from "./test/useRecordTest";
+import { useMethodDecoratorTest } from "./test/useMethodDecoratorTest";
 
 window.addEventListener("load", () => {
   const app: HTMLElement | null = document.getElementById("app");
@@ -30,7 +31,7 @@ window.addEventListener("load", () => {
     app.removeAttribute("data-cloak");
   }
 
-  // useMethodDecoratorTest();
+  useMethodDecoratorTest();
 });
 
 formateLogOutput(["✨", `you are running on ${process.env.NODE_ENV} mode!`]);
