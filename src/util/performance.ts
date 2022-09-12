@@ -26,3 +26,48 @@ export function debounce(
     }
   };
 }
+
+/**
+ * @description 简单的节流函数
+ * @author [Shalling]
+ * @date 2022-09-12 09:09:15
+ * @export
+ * @param {Function} executorFn 执行节流的函数
+ * @param {number} [delay=200] 间隔执行延迟
+ * @param {boolean} [startImmediate=true] 第一个函数是否立即执行
+ * @param {...Array<any>} args 函数的参数
+ * @returns {*}
+ */
+export function throttle(
+  executorFn: Function,
+  delay: number = 200,
+  startImmediate: boolean = true,
+  ...args: Array<any>
+): () => void {
+  /**
+   * @description 用于判定是否进行节流的锁
+   */
+  let locker: boolean = false;
+  return (): void => {
+    // 第一次调用函数立即执行的情况
+    if (startImmediate) {
+      locker = true;
+      executorFn(...args);
+      // 切换状态
+      startImmediate = false;
+      locker = false;
+    }
+    // 第一次执行不等待定时器延迟
+    else {
+      if (!locker) {
+        locker = true;
+        setTimeout((): void => {
+          executorFn(...args);
+          locker = false;
+        }, delay);
+      } else {
+        return;
+      }
+    }
+  };
+}

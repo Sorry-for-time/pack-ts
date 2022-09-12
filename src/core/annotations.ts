@@ -1,4 +1,4 @@
-import { debounce } from "src/util/performance";
+import { debounce, throttle } from "src/util/performance";
 
 interface InjectFn {
   name: string;
@@ -35,6 +35,24 @@ export function useDebounce(delay: number = 300, startImmediate: boolean = true)
     console.log(`%cbefore use method decorator ${descriptor.value}`, "color: cyan");
     descriptor.value = debounce(descriptor.value, delay, startImmediate);
     console.log(`%cafter use method decorator ===>" ${descriptor.value}`, "color: yellow");
+  };
+}
+
+/**
+ * @description 方法节流转装饰器
+ * @author [Shalling]
+ * @date 2022-09-12 09:09:12
+ * @export
+ * @param {number} [delay=300] 节流间隔延迟
+ * @param {boolean} [startImmediate=true] 第一次使用函数时是否立即执行, 无需等待
+ * @returns {*}  {MethodDecorator}
+ */
+export function useThrottle(delay: number = 300, startImmediate: boolean = true): MethodDecorator {
+  return (_target: Object, _propertyKey: string | symbol, descriptor: PropertyDescriptor) => {
+    // 也可以用 es6 的新语法偷个懒
+    console.log(`%cbefore use throttle decorator ${descriptor.value}`, "color: cyan");
+    descriptor.value = throttle(descriptor.value, delay, startImmediate);
+    console.log(`%cafter use throttle decorator ===>" ${descriptor.value}`, "color: yellow");
   };
 }
 

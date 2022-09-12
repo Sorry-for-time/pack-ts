@@ -22,6 +22,5 @@ export function cloneDeepWithDescriptors<O extends object, K extends keyof O>(
   descriptors.forEach((descriptor) => {
     returnValue[descriptor] = source[descriptor];
   });
-
   return JSON.parse(JSON.stringify(returnValue));
 }
